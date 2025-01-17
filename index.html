@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lung Disease Classifier</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: rgb(197, 197, 196);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            text-align: center;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 600px;
+        }
+        h1 {
+            color: #333;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        input[type="file"] {
+            margin-bottom: 20px;
+        }
+        input[type="submit"] {
+            background-color: #60b0fa;
+            color: rgb(231, 231, 218);
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #4993d8;
+        }
+        .result {
+            margin-top: 20px;
+            text-align: center;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+        .prediction {
+            font-size: 1.2em;
+            margin-top: 10px;
+            font-weight: bold;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Upload an image for classification</h1>
+        <form action="/" method="post" enctype="multipart/form-data">
+            <input type="file" name="file" accept="image/*">
+            <input type="submit" value="Classify">
+        </form>
+
+        {% if image_url %}
+            <div class="result">
+                <div class="prediction">
+                    <h3>Result: {{ prediction }}</h3>
+                </div>
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>
